@@ -1,0 +1,64 @@
+/* Responsive Design - Simplified 2-breakpoint system */
+/* This file contains responsive CSS rules for desktop and mobile layouts */
+
+/* ======================================== */
+/* DESKTOP - 2 columns layout (≥769px) */
+/* ======================================== */
+@media (min-width: 769px) {
+    /* Desktop inherits base styles - no special rules needed */
+    /* Base CSS already handles 2-column layout perfectly */
+}
+
+/* ======================================== */
+/* MOBILE - Single column layout (≤768px) */
+/* ======================================== */
+@media (max-width: 768px) {
+    /* Essential layout changes */
+    main {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .form, .list {
+        flex: none;
+        max-width: none;
+        width: 100%;
+        padding: 1rem;
+    }
+    
+    /* Essential touch optimization */
+    .btn, .action-btn {
+        min-height: 44px;
+        width: 100%;
+    }
+    
+    /* Essential form/button changes */
+    .form-actions, .actions {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    /* Essential table scroll */
+    .table-container {
+        overflow-x: auto;
+    }
+    
+    /* Essential mobile optimizations */
+    .modal-content {
+        margin: 5% auto;
+        width: 95%;
+        max-width: 400px;
+    }
+    
+    .modal-actions {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    .notification {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        width: auto;
+    }
+}
