@@ -1,0 +1,74 @@
+/* List section - Right column (68% - larger) */
+.list {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.list h2 {
+    margin-bottom: 1rem;
+    color: #333;
+    font-size: 1.5rem;
+}
+
+/* Table styles */
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+th, td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #e9ecef;
+}
+
+th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+    color: #495057;
+}
+
+tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* Action buttons - Unified with main buttons */
+.actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.action-btn.edit {
+    background-color: #007bff;
+    color: white;
+}
+
+.action-btn.edit:hover {
+    background-color: #0056b3;
+}
+
+.action-btn.delete {
+    background-color: #dc3545;
+    color: white;
+}
+
+.action-btn.delete:hover {
+    background-color: #c82333;
+}
+
+/* No data message */
+.no-data {
+    text-align: center;
+    color: #6c757d;
+    font-style: italic;
+    padding: 2rem;
+}
+
+
