@@ -138,8 +138,8 @@ async function editUser(userId) {
     }
 }
 
-// Delete user
-function deleteUser(userId) {
+// Open delete confirm modal
+function openDeleteConfirm(userId) {
     currentUserId = userId;
     confirmMessage.textContent = 'Delete this user?';
     confirmModal.style.display = 'block';
@@ -148,29 +148,9 @@ function deleteUser(userId) {
 // Confirm delete action
 async function confirmAction() {
     if (currentUserId) {
-        try {
-            // Step 1: Create FormData with user ID
-            const formData = new FormData();
-            formData.append('id', currentUserId);
-            
-            // Step 2: Call API to delete user
-            const response = await fetch('operations.php?action=delete', {
-                method: 'POST',
-                body: formData
-            });
-            
-            // Step 3: Convert response to JSON
-            const result = await response.json();
-            
-            // Step 4: Check result
-            if (result.success) {
-                showMessage(result.message);
-                loadUsers(); // Reload list
-            } else {
-                showMessage(result.message, 'error');
-            }
-        } catch (error) {
-            showMessage('Failed to delete user: ' + error.message, 'error');
+        const isDeleted = await deleteUser(currentUserId);
+        if (isDeleted) {
+            loadUsers(); // Reload list
         }
     }
     closeModal();
@@ -253,6 +233,36 @@ async function updateUser(formData) {
     }
 }
 
+// Delete user
+async function deleteUser(id) {
+    try {
+        // Step 1: Create FormData with user ID
+        const formData = new FormData();
+        formData.append('id', id);
+
+        // Step 2: Call API to delete user
+        const response = await fetch('operations.php?action=delete', {
+            method: 'POST',
+            body: formData
+        });
+
+        // Step 3: Convert response to JSON
+        const result = await response.json();
+
+        // Step 4: Check result
+        if (result.success) {
+            showMessage(result.message);
+            return true;
+        } else {
+            showMessage(result.message, 'error');
+            return false;
+        }
+    } catch (error) {
+        showMessage('Failed to delete user: ' + error.message, 'error');
+        return false;
+    }
+}
+
 // ========================================
 // UI FUNCTIONS
 // ========================================
@@ -287,7 +297,7 @@ function displayUsers(users) {
             <td>${formatDate(user.created_at)}</td>
             <td class="actions">
                 <button onclick="editUser(${user.id})" class="action-btn edit">Edit</button>
-                <button onclick="deleteUser(${user.id})" class="action-btn delete">Delete</button>
+                <button onclick="openDeleteConfirm(${user.id})" class="action-btn delete">Delete</button>
             </td>
         `;
         usersTableBody.appendChild(row);
