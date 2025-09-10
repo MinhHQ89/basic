@@ -117,7 +117,7 @@ function createUser() {
         
         // Insert new user
         $sql = "INSERT INTO users (name, email, phone) VALUES (?, ?, ?)";
-        $result = $db->insert($sql, [$name, $email, $phone]);
+        $result = $db->execute($sql, [$name, $email, $phone]);
         
         if ($result) {
             sendResponse(['success' => true, 'message' => 'User created successfully']);
@@ -178,7 +178,7 @@ function updateUser() {
         
         // Update user
         $sql = "UPDATE users SET name = ?, email = ?, phone = ? WHERE id = ?";
-        $result = $db->update($sql, [$name, $email, $phone, $id]);
+        $result = $db->execute($sql, [$name, $email, $phone, $id]);
         
         if ($result) {
             sendResponse(['success' => true, 'message' => 'User updated successfully']);
@@ -217,7 +217,7 @@ function deleteUser() {
         
         // Delete user
         $sql = "DELETE FROM users WHERE id = ?";
-        $result = $db->delete($sql, [$id]);
+        $result = $db->execute($sql, [$id]);
         
         if ($result) {
             sendResponse(['success' => true, 'message' => 'User deleted successfully']);

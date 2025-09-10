@@ -87,50 +87,6 @@ class Database {
         }
     }
     
-    /**
-     * Execute INSERT query
-     * @param string $sql SQL statement
-     * @param array $params Parameters for prepared statement
-     * @return bool True if successful
-     */
-    public function insert($sql, $params = []) {
-        try {
-            $stmt = $this->pdo->prepare($sql);
-            return $stmt->execute($params);
-        } catch (PDOException $e) {
-            throw new Exception("INSERT query error: " . $e->getMessage());
-        }
-    }
-    
-    /**
-     * Execute UPDATE query
-     * @param string $sql SQL statement
-     * @param array $params Parameters for prepared statement
-     * @return bool True if successful
-     */
-    public function update($sql, $params = []) {
-        try {
-            $stmt = $this->pdo->prepare($sql);
-            return $stmt->execute($params);
-        } catch (PDOException $e) {
-            throw new Exception("UPDATE query error: " . $e->getMessage());
-        }
-    }
-    
-    /**
-     * Execute DELETE query
-     * @param string $sql SQL statement
-     * @param array $params Parameters for prepared statement
-     * @return bool True if successful
-     */
-    public function delete($sql, $params = []) {
-        try {
-            $stmt = $this->pdo->prepare($sql);
-            return $stmt->execute($params);
-        } catch (PDOException $e) {
-            throw new Exception("DELETE query error: " . $e->getMessage());
-        }
-    }
     
     /**
      * Execute any SQL query
