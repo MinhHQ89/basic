@@ -11,31 +11,16 @@ try {
     echo "<h1>Database Setup - CRUD Application</h1>";
     echo "<hr>";
     
-    // Step 1: Connect to MySQL (without database)
-    echo "<h2>Step 1: Connecting to MySQL...</h2>";
-    $dsn = "mysql:host=" . DB_HOST . ";port=" . DB_PORT . ";charset=utf8mb4";
-    $pdo = new PDO($dsn, DB_USERNAME, DB_PASSWORD, [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-    ]);
-    echo "✓ Connected to MySQL successfully<br>";
-    
-    // Step 2: Create database
-    echo "<h2>Step 2: Creating database...</h2>";
-    $databaseName = DB_NAME;
-    $sql = "CREATE DATABASE IF NOT EXISTS `{$databaseName}` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci";
-    $pdo->exec($sql);
-    echo "✓ Database '{$databaseName}' created successfully<br>";
-    
-    // Step 3: Connect to newly created database
-    echo "<h2>Step 3: Connecting to database...</h2>";
+    // Step 1: Connect to database
+    echo "<h2>Step 1: Connecting to database...</h2>";
     $dsn = "mysql:host=" . DB_HOST . ";port=" . DB_PORT . ";dbname=" . DB_NAME . ";charset=utf8mb4";
     $pdo = new PDO($dsn, DB_USERNAME, DB_PASSWORD, [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
     ]);
-    echo "✓ Connected to database '{$databaseName}' successfully<br>";
+    echo "✓ Connected to database successfully<br>";
     
-    // Step 4: Create users table
-    echo "<h2>Step 4: Creating users table...</h2>";
+    // Step 2: Create users table
+    echo "<h2>Step 2: Creating users table...</h2>";
     $tableName = 'users';
     
     // Check if table exists
@@ -59,8 +44,8 @@ try {
         echo "✓ Table '{$tableName}' created successfully<br>";
     }
     
-    // Step 5: Add sample data
-    echo "<h2>Step 5: Adding sample data...</h2>";
+    // Step 3: Add sample data
+    echo "<h2>Step 3: Adding sample data...</h2>";
     
     // Check if data already exists
     $sql = "SELECT COUNT(*) as count FROM users";
