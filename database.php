@@ -105,67 +105,6 @@ class Database {
     }
     
     /**
-     * Get last inserted ID
-     * @return string Last inserted ID
-     */
-    public function lastInsertId() {
-        return $this->pdo->lastInsertId();
-    }
-    
-    /**
-     * Get row count from last query
-     * @return int Row count
-     */
-    public function rowCount() {
-        return $this->pdo->rowCount();
-    }
-    
-    /**
-     * Begin transaction
-     */
-    public function beginTransaction() {
-        return $this->pdo->beginTransaction();
-    }
-    
-    /**
-     * Commit transaction
-     */
-    public function commit() {
-        return $this->pdo->commit();
-    }
-    
-    /**
-     * Rollback transaction
-     */
-    public function rollback() {
-        return $this->pdo->rollback();
-    }
-    
-    /**
-     * Check if in transaction
-     * @return bool True if in transaction
-     */
-    public function inTransaction() {
-        return $this->pdo->inTransaction();
-    }
-    
-    /**
-     * Get PDO instance
-     * @return PDO PDO instance
-     */
-    public function getPdo() {
-        return $this->pdo;
-    }
-    
-    /**
-     * Check connection
-     * @return bool True if connected
-     */
-    public function isConnected() {
-        return $this->pdo !== null;
-    }
-    
-    /**
      * Close database connection (PDO auto-closes)
      */
     public function close() {
